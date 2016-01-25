@@ -2,10 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+
+<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <link href="../static/css/style.css"
+          th:href="@{css/style.css}" rel="stylesheet" media="screen"/>
 <title>sign up</title>
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-	<!--/* <xmp> */-->
+	<div class="container">
+	<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 	<h2>sign up</h2>
 	
 	<form action="/user" method="post">
@@ -14,5 +26,6 @@
 		닉네임<input type="text" name="nickname" id="nickname"/>
 		<button type="submit" name="button">회원가입</button>
 	</form>
+	</div>
 </body>
 </html>

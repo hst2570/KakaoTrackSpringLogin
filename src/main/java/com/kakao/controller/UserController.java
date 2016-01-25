@@ -3,7 +3,6 @@ package com.kakao.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +13,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kakao.domain.User;
 import com.kakao.domain.UserSignIn;
 import com.kakao.repository.UserRepository;
+import com.kakao.services.UserSigninService;
+import com.kakao.services.UserSigninServiceImpl;
  
 @Controller
-public class MainController {
+public class UserController {
  
     @Autowired private UserRepository userRepository;
+    
+    private UserSigninService UserSigninService; 
+    
+    public UserController() {
+    	UserSigninService = new UserSigninServiceImpl();
+	}
     
     @RequestMapping("/user/list")
     public @ResponseBody List<User> getUserList() {
@@ -35,7 +42,7 @@ public class MainController {
     	 */
     	System.out.println(user.toString());
     	userRepository.save(user);
-		return "user/index";
+		return "index";
 	}
         
     @RequestMapping(value="/user/signin", method=RequestMethod.POST)
@@ -46,6 +53,7 @@ public class MainController {
     	 * 로그인 실패라면 다시 로그인창으로 이동
     	 * 모든 회원정보를 가져와 들어온 데이터와 비교. 효율성 떨어짐.
     	 */
+    	session.setAttribute("signinFail", null);
     	List<User> user =  userRepository.findAll();
     	
     	for(int i = 0; i < user.size(); i++){
@@ -55,12 +63,12 @@ public class MainController {
         		
         		session.setAttribute("userId", user.get(i).getmemId());
         		
-        		return "user/index"; 
+        		return "index"; 
         	}
     	}
     	
     	System.out.println("로그인 실패");
-    	session.setAttribute("userId", "fail");
+    	session.setAttribute("signinFail", "fail");
         return "user/signin"; 
     }
     
@@ -71,7 +79,7 @@ public class MainController {
     	 */
 		session.setAttribute("userId", null);
 		System.out.println("로그아웃");
-		return "user/index"; 
+		return "index"; 
          
     }
 }
