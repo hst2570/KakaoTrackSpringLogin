@@ -4,6 +4,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+//로그인 시도시 입력된 값을 저장하는 임시 저장소
 public class UserSignIn {
 	@NotEmpty @Size (min=4, max=20)
 	private String email;

@@ -5,5 +5,4 @@ import com.kakao.domain.User;
  
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findById(String string);
 }
