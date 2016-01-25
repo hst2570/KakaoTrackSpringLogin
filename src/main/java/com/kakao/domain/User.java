@@ -8,7 +8,7 @@ public class User implements Serializable {
  
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id; //순번 ->mem_id
+    private String memId; //순번 ->mem_memId
     
     @Column(name = "email", nullable = false)
     private String email;
@@ -19,12 +19,12 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
-	public String getId() {
-		return id;
+	public String getmemId() {
+		return memId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setmemId(String memId) {
+		this.memId = memId;
 	}
     
 	public String getEmail() {
@@ -53,6 +53,6 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", nickname=" + nickname + ", password=" + password + "]";
+		return "User [memId=" + memId + ", email=" + email + ", nickname=" + nickname + ", password=" + password + "]";
 	}
 }

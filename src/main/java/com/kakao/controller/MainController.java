@@ -52,7 +52,7 @@ public class MainController {
     				&& user.get(i).getPassword().equals(signin.getPassword())){
         		System.out.println("로그인 성공");
         		
-        		session.setAttribute("userId", user.get(i).getId());
+        		session.setAttribute("userId", user.get(i).getmemId());
         		
         		return "user/index"; 
         	}
