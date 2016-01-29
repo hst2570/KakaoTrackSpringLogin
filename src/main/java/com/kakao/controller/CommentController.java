@@ -67,6 +67,4 @@ public class CommentController {
         model.addAttribute("comments", commentService.addLike(commentService.getCommentById(id)));
         return "redirect:/comments/";
     }
-
-
 }
